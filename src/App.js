@@ -79,7 +79,7 @@ function App() {
 
           <span id="theme-btn" onClick={() =>{ 
             setDarkMode(!darkMode);
-            localStorage.setItem("siteTheme", JSON.stringify(darkMode))}}>
+            localStorage.setItem("siteTheme", JSON.stringify(!darkMode))}}>
             {darkMode ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
           </span>
         </nav>
