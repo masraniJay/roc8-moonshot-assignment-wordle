@@ -1,0 +1,141 @@
+.App {
+  text-align: center;
+  /* background-color: #121212; */
+  width: 100vw;
+  height: 100vh;
+  /* display: flex; */
+  /* color: white; */
+}
+
+.light{
+  background-color: white;
+  color: #121212;
+}
+
+.dark{
+  background-color: #121212;
+  color: white;
+}
+
+body {
+  padding: 0%;
+  margin: 0;
+}
+
+nav {
+  height: 4rem;
+  /* width: 100%; */
+  margin: 0;
+  border-bottom: 1px solid grey;
+  display: flex;  
+  align-items: center; 
+  justify-content: space-between;
+}
+
+#theme-btn{
+  margin-right: 1rem;
+}
+
+nav h1 {
+  margin: auto;
+  font-family: Helvetica, Arial, sans-serif;
+  /* color: white; */
+  font-size: 2rem;
+}
+
+.game {
+  width: 100vw;
+  height: calc(100vh - 9rem);
+  display: flex;
+  align-items: center;
+  padding-top: 3rem;
+  flex-direction: column;
+}
+
+.board {
+  width: 20rem;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  margin: 0.3rem;
+}
+
+.letter {
+  flex: 33%;
+  height: 100%;
+  border: 1px solid grey;
+  margin: 0.3rem;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  font-weight: bolder;
+  /* color: white; */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#correct {
+  background-color: #528d4e;
+}
+
+#almost {
+  background-color: #b49f39;
+}
+
+#error {
+  background-color: #3a393c;
+}
+
+.keyboard {
+  width: 30rem;
+  margin-top: 2rem;
+}
+
+.line1 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  display: flex;
+  justify-content: center;
+  margin: 0.3rem;
+}
+.line2 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.3rem;
+}
+.line3 {
+  flex: 33%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0.3rem;
+}
+
+.key {
+  width: 2rem;
+  height: 3rem;
+  margin: 0.2rem;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 1rem;
+  background-color: grey;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+#big {
+  width: 4rem;
+}
+#disabled {
+  background-color: #3a393c;
+}
