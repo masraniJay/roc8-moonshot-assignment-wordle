@@ -4,8 +4,8 @@ import Keyboard from "./components/Keyboard";
 import { boardDefault, generateWordSet } from "./Words";
 import React, { useState, createContext, useEffect } from "react";
 import GameOver from "./components/GameOver";
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
-import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined';
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 
 export const AppContext = createContext();
 
@@ -19,7 +19,7 @@ function App() {
     gameOver: false,
     guessedWord: false,
   });
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(JSON.parse(localStorage.getItem("siteTheme")) || false);
 
   useEffect(() => {
     generateWordSet().then((words) => {
@@ -45,7 +45,7 @@ function App() {
       setGameOver({ gameOver: true, guessedWord: true });
       return;
     }
-    
+
     if (currAttempt.attempt === 5) {
       setGameOver({ gameOver: true, guessedWord: false });
       return;
@@ -73,34 +73,37 @@ function App() {
 
   return (
     <div className={darkMode ? "dark" : "light"}>
-    <div className="App">
-      <nav>
-        <h1>Wordle</h1>
-        
-        <span id="theme-btn" onClick={()=>setDarkMode(!darkMode)}>{ darkMode ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}</span>
-        
-      </nav>
-      <AppContext.Provider
-        value={{
-          board,
-          setBoard,
-          currAttempt,
-          setCurrAttempt,
-          correctWord,
-          onSelectLetter,
-          onDelete,
-          onEnter,
-          setDisabledLetters,
-          disabledLetters,
-          gameOver,
-        }}
-      >
-        <div className="game">
-          <Board />
-          {gameOver.gameOver ? <GameOver /> : <Keyboard />}
-        </div>
-      </AppContext.Provider>
-    </div>
+      <div className="App">
+        <nav>
+          <h1>Wordle</h1>
+
+          <span id="theme-btn" onClick={() =>{ 
+            setDarkMode(!darkMode);
+            localStorage.setItem("siteTheme", JSON.stringify(darkMode))}}>
+            {darkMode ? <LightModeOutlinedIcon /> : <DarkModeOutlinedIcon />}
+          </span>
+        </nav>
+        <AppContext.Provider
+          value={{
+            board,
+            setBoard,
+            currAttempt,
+            setCurrAttempt,
+            correctWord,
+            onSelectLetter,
+            onDelete,
+            onEnter,
+            setDisabledLetters,
+            disabledLetters,
+            gameOver,
+          }}
+        >
+          <div className="game">
+            <Board />
+            {gameOver.gameOver ? <GameOver /> : <Keyboard />}
+          </div>
+        </AppContext.Provider>
+      </div>
     </div>
   );
 }
